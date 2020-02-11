@@ -17,10 +17,14 @@
     }
   },
   "lint-staged": {
-    "./src/*.{js,jsx,ts,tsx}": [
-      "npx prettier --write",
-      "eslint *.js --fix-dry-run"
-    ]
+    "lint-staged": {
+      "*.{js,jsx}": [
+        "eslint --fix"
+      ],
+      "*.{json,md,scss,yaml,yml}": [
+        "prettier --write"
+      ]
+    }
   },
   "dependencies": {
     "expo": "~36.0.0",
