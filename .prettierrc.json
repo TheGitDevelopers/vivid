@@ -6,5 +6,5 @@
   "semi": true,
   "printWidth": 70,
   "arrowParens": "always",
-  "bracketSpacing": true,
+  "bracketSpacing": true
 }
