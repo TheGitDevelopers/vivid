@@ -17,14 +17,10 @@
     }
   },
   "lint-staged": {
-    "lint-staged": {
-      "*.{js,jsx}": [
-        "eslint --fix"
-      ],
-      "*.{json,md,scss,yaml,yml}": [
-        "prettier --write"
-      ]
-    }
+    "./src/*.{js,jsx,ts,tsx}": [
+      "npx prettier --write",
+      "eslint src/*.js --fix-dry-run"
+    ]
   },
   "dependencies": {
     "expo": "~36.0.0",
@@ -41,7 +37,6 @@
     "eslint-config-airbnb": "^18.0.1",
     "husky": "^4.2.1",
     "jest": "^25.1.0",
-    "jest-expo": "^36.0.1",
     "lint-staged": "^10.0.7",
     "prettier": "^1.19.1",
     "react-test-renderer": "^16.12.0"
