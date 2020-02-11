@@ -57,3 +57,22 @@ npm start
 ```
 
 5. Then open metro panel and use the local device option.
+
+
+## What we are using? <a name="tools"></a>
+
+### Testing
+1. Jest
+2. React test renderer
+3. Enzyme
+
+### UI components
+1. React native elements
+
+### Linters
+1. Eslint
+2. Prettier
+3. Husky
+
+### Project structure
+1. Prop-types

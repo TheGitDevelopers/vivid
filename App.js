@@ -1,19 +1,16 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import Input from './src/components/common/input/input';
+import ContentContainer from './src/components/common/containers/content-container/container';
+import Button from './src/components/common/button/button';
+
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App to start working on your app!</Text>
-    </View>
+    <>
+      <ContentContainer>
+        <Input iconName="user" iconType="antdesign" placeholder="Input" />
+        <Button text="Submit" onPress={() => console.log('Click')} />
+      </ContentContainer>
+    </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
