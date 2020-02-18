@@ -10,10 +10,10 @@ const animationDetails = {
 };
 
 const MenuIcon = ({ style, isHidden }) => {
-  const [lineAnim] = useState(new Animated.Value(1));
-  const [opacityAnim] = useState(new Animated.Value(0));
-  const [rotationAnim] = useState(new Animated.Value(1));
-  const [crossAnim] = useState(new Animated.Value(1));
+  const [lineAnim] = useState(new Animated.Value(0));
+  const [opacityAnim] = useState(new Animated.Value(1));
+  const [rotationAnim] = useState(new Animated.Value(0));
+  const [crossAnim] = useState(new Animated.Value(0));
 
   const hide = () => {
     Animated.stagger(150, [

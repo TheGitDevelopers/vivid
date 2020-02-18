@@ -4,7 +4,7 @@ import MenuIcon from '../../animated-components/menu-icon/menuIcon';
 
 const MenuButton = () => {
   const [pulseAnime] = useState(new Animated.Value(0));
-  const [isHidden, setIsHidden] = useState(false);
+  const [isHidden, setIsHidden] = useState(null);
   const [isAnimating, setIsAnimating] = useState(false);
 
   const pulsePress = () => {
