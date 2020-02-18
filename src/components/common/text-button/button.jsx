@@ -2,24 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { View, Text, TouchableWithoutFeedback, StyleSheet } from 'react-native';
 import { NORMAL_TEXT_SIZE } from '../../../constants/theme/typography';
-import { DISABLED_COLOR, MAIN_THEME_COLOR } from '../../../constants/theme/colors';
+import { DISABLED_COLOR, MAIN_TEXT_COLOR } from '../../../constants/theme/colors';
 
 const styles = StyleSheet.create({
   button: {
     width: '100%',
     padding: 20,
-    borderRadius: 60,
-    backgroundColor: MAIN_THEME_COLOR,
     justifyContent: 'center',
     alignItems: 'center',
   },
   text: {
-    textTransform: 'uppercase',
-    color: '#ffffff',
+    color: MAIN_TEXT_COLOR,
     fontSize: NORMAL_TEXT_SIZE,
   },
   disabled: {
-    backgroundColor: DISABLED_COLOR,
+    color: DISABLED_COLOR,
   },
 });
 
