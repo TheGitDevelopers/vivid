@@ -9,6 +9,9 @@ npm-debug.*
 *.orig.*
 web-build/
 web-report/
+
+vscode
+.vscode
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
