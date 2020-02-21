@@ -1,30 +1,31 @@
 import React from 'react';
-import { StyleSheet, View, TouchableWithoutFeedback, Keyboard } from 'react-native';
+import { StyleSheet, TouchableWithoutFeedback, Keyboard, ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
 import { MAIN_BACKGROUND_COLOR } from '../../../../constants/theme/colors';
+import { height } from '../../../../assets/data/screenData';
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    height,
     paddingLeft: 30,
     paddingRight: 30,
     backgroundColor: MAIN_BACKGROUND_COLOR,
     alignItems: 'center',
-    justifyContent: 'center',
-  }
+    justifyContent: 'flex-start',
+    paddingTop: 50,
+  },
 });
 
 const ContentContainer = ({ children }) => (
   <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
-    <View style={styles.container}>
+    <ScrollView nestedScrollEnabled contentContainerStyle={styles.container}>
       {children}
-    </View>
+    </ScrollView>
   </TouchableWithoutFeedback>
 );
 
-ContentContainer.propTypes = ({
-  children: PropTypes.oneOfType([PropTypes.node, PropTypes.arrayOf(PropTypes.node)]).isRequired
-});
-
+ContentContainer.propTypes = {
+  children: PropTypes.oneOfType([PropTypes.node, PropTypes.arrayOf(PropTypes.node)]).isRequired,
+};
 
 export default ContentContainer;

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, Text, TouchableWithoutFeedback, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { NORMAL_TEXT_SIZE } from '../../../constants/theme/typography';
 import { DISABLED_COLOR, MAIN_TEXT_COLOR } from '../../../constants/theme/colors';
 
@@ -21,11 +21,11 @@ const styles = StyleSheet.create({
 });
 
 const Button = ({ onPress, text, style, disabled }) => (
-  <TouchableWithoutFeedback disabled={disabled} onPress={() => onPress()}>
+  <TouchableOpacity disabled={disabled} onPress={() => onPress()}>
     <View style={[styles.button, style, disabled ? styles.disabled : null]}>
       <Text style={styles.text}>{text}</Text>
     </View>
-  </TouchableWithoutFeedback>
+  </TouchableOpacity>
 );
 
 Button.propTypes = {

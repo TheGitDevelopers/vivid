@@ -1,34 +1,54 @@
 import React from 'react';
-import { View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Logo from './src/components/common/logo/logo';
 import MenuButton from './src/components/common/menu-button/menuButton';
+import Basic from './src/screens/register/basic';
+import { slideHorizontal } from './src/tools/pageTransitions';
+import PictureUpload from './src/screens/register/pictureUpload';
+import OtherInfo from './src/screens/register/otherInfo';
 
 const Stack = createStackNavigator();
 
-const HomeScreen = () => (
-  <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-    <Text>Home Screen</Text>
-  </View>
-);
+const screenWithMenu = {
+  headerStyle: {
+    elevation: 0
+  },
+  headerLeft: null,
+  headerTitle: () => <Logo />,
+  headerRight: () => (
+    <MenuButton />
+  ),
+  ...slideHorizontal
+};
+
+const screenWithoutMenu = {
+  headerStyle: {
+    elevation: 0
+  },
+  headerLeft: null,
+  headerTitle: () => <Logo />,
+  ...slideHorizontal,
+};
 
 const App = () => (
   <>
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name="Home"
-          component={HomeScreen}
-          options={{
-            headerStyle: {
-              elevation: 0
-            },
-            headerTitle: () => <Logo />,
-            headerRight: () => (
-              <MenuButton />
-            ),
-          }}
+          name="Register"
+          component={Basic}
+          options={screenWithoutMenu}
+        />
+        <Stack.Screen
+          name="PictureUpload"
+          component={PictureUpload}
+          options={screenWithoutMenu}
+        />
+        <Stack.Screen
+          name="OtherInfo"
+          component={OtherInfo}
+          options={screenWithoutMenu}
         />
       </Stack.Navigator>
     </NavigationContainer>
