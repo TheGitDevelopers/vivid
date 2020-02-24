@@ -37,7 +37,7 @@ const AddFriends = ({ navigation: { navigate } }) => (
         iconName="facebook-box"
       />
       <EmptyDivider size="small" />
-      <Button onPress={() => navigate('Register')} text={CREATE_ACCOUNT} />
+      <Button onPress={() => navigate('Login')} text={CREATE_ACCOUNT} />
       <EmptyDivider size="big" />
       <Text style={{ color: MAIN_TEXT_COLOR }}>{RULES_TEXT_FIRST}</Text>
       <View style={{ flexDirection: 'row' }}>
