@@ -11,6 +11,8 @@ import reducer from './src/redux/reducers/reducer';
 import EducationInfo from './src/screens/register/educationInfo';
 import AddFriends from './src/screens/register/addFriends';
 import Login from './src/screens/login/login';
+import NewPassword from './src/screens/login/newPassword';
+import ForgotPassword from './src/screens/login/forgotPassword';
 
 const Stack = createStackNavigator();
 
@@ -29,6 +31,16 @@ const App = () => (
           <Stack.Screen
             name="Login"
             component={Login}
+            options={screenWithoutMenu}
+          />
+          <Stack.Screen
+            name="ForgotPassword"
+            component={ForgotPassword}
+            options={screenWithoutMenu}
+          />
+          <Stack.Screen
+            name="NewPassword"
+            component={NewPassword}
             options={screenWithoutMenu}
           />
           <Stack.Screen

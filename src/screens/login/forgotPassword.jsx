@@ -5,35 +5,33 @@ import ContentContainer from '../../components/common/containers/content-contain
 import Input from '../../components/common/input/input';
 import EmptyDivider from '../../components/common/dividers/emptyDivider';
 import Button from '../../components/common/button/button';
-import { EMAIL_INPUT, PASSWORD_INPUT } from '../../assets/texts/register';
-import { LOGIN_LOGIN_BUTTON, LOGIN_FORGOT_PASSWORD, LOGIN_HEADER } from '../../assets/texts/login';
-import TextButton from '../../components/common/text-button/button';
+import { EMAIL_INPUT } from '../../assets/texts/register';
+import {
+  FORGOT_PASSWORD_RESET_BUTTON,
+  FORGOT_PASSWORD_HEADER,
+  FORGOT_PASSWORD_TEXT,
+} from '../../assets/texts/login';
+import NormalText from '../../components/common/text/normalText';
 
-const Login = ({ navigation: { navigate } }) => (
+const ForgotPassword = ({ navigation: { navigate } }) => (
   <>
     <ContentContainer>
-      <Header text={LOGIN_HEADER} />
+      <Header text={FORGOT_PASSWORD_HEADER} />
       <EmptyDivider />
       <Input type="email" iconName="envelope" placeholder={EMAIL_INPUT} />
       <EmptyDivider size="small" />
-      <Input type="password" iconName="lock" placeholder={PASSWORD_INPUT} />
+      <NormalText text={FORGOT_PASSWORD_TEXT} />
       <EmptyDivider size="big" />
       <EmptyDivider size="big" />
-      <Button onPress={() => navigate('BeerMain')} text={LOGIN_LOGIN_BUTTON} />
-      <TextButton
-        onPress={() => {
-          navigate('ForgotPassword');
-        }}
-        text={LOGIN_FORGOT_PASSWORD}
-      />
+      <Button onPress={() => navigate('NewPassword')} text={FORGOT_PASSWORD_RESET_BUTTON} />
     </ContentContainer>
   </>
 );
 
-Login.propTypes = {
+ForgotPassword.propTypes = {
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired,
   }).isRequired,
 };
 
-export default Login;
+export default ForgotPassword;
