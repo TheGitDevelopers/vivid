@@ -17,7 +17,7 @@ const OTHER_INFO_IS_STUDENT = 'Czy jesteś studentem?';
 const STUDY_HEADER = 'Co studiujesz?';
 const STUDY_UNIVERISTY = 'Nazwa uczelni';
 const STUDY_FIELD = 'Kierunek';
-const STUDY_SEMESTER = 'Semester';
+const STUDY_SEMESTER = 'Semestr';
 
 
 export {

@@ -1,57 +1,47 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import Logo from './src/components/common/logo/logo';
-import MenuButton from './src/components/common/menu-button/menuButton';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 import Basic from './src/screens/register/basic';
-import { slideHorizontal } from './src/tools/pageTransitions';
 import PictureUpload from './src/screens/register/pictureUpload';
 import OtherInfo from './src/screens/register/otherInfo';
+import { screenWithoutMenu } from './src/tools/showMenu';
+import educationReducer from './src/redux/reducers/register/education';
+import EducationInfo from './src/screens/register/educationInfo';
 
 const Stack = createStackNavigator();
 
-const screenWithMenu = {
-  headerStyle: {
-    elevation: 0
-  },
-  headerLeft: null,
-  headerTitle: () => <Logo />,
-  headerRight: () => (
-    <MenuButton />
-  ),
-  ...slideHorizontal
-};
-
-const screenWithoutMenu = {
-  headerStyle: {
-    elevation: 0
-  },
-  headerLeft: null,
-  headerTitle: () => <Logo />,
-  ...slideHorizontal,
-};
+const store = createStore(educationReducer);
 
 const App = () => (
   <>
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Register"
-          component={Basic}
-          options={screenWithoutMenu}
-        />
-        <Stack.Screen
-          name="PictureUpload"
-          component={PictureUpload}
-          options={screenWithoutMenu}
-        />
-        <Stack.Screen
-          name="OtherInfo"
-          component={OtherInfo}
-          options={screenWithoutMenu}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="Register"
+            component={Basic}
+            options={screenWithoutMenu}
+          />
+          <Stack.Screen
+            name="PictureUpload"
+            component={PictureUpload}
+            options={screenWithoutMenu}
+          />
+          <Stack.Screen
+            name="OtherInfo"
+            component={OtherInfo}
+            options={screenWithoutMenu}
+          />
+          <Stack.Screen
+            name="EducationInfo"
+            component={EducationInfo}
+            options={screenWithoutMenu}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </Provider>
   </>
 );
 

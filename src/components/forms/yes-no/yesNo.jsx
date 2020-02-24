@@ -23,19 +23,23 @@ const styles = StyleSheet.create({
   },
 });
 
-const YesNo = ({ question, yes, no, defaultValue }) => {
+const YesNo = ({ question, yes, no, defaultValue, onChange }) => {
   const [val, setVal] = useState(defaultValue);
+  const handleChange = (value) => {
+    onChange(value);
+    setVal(value);
+  };
   return (
     <>
       <Text style={styles.question}>{question}</Text>
       <EmptyDivider style={{ marginVertical: 2 }} />
       <View style={styles.container}>
-        <TouchableOpacity onPress={() => setVal(false)}>
+        <TouchableOpacity onPress={() => handleChange(false)}>
           <Text style={[styles.text, val === false ? { color: MAIN_THEME_COLOR } : null]}>
             {no}
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => setVal(true)}>
+        <TouchableOpacity onPress={() => handleChange(true)}>
           <Text style={[styles.text, val === true ? { color: MAIN_THEME_COLOR } : null]}>
             {yes}
           </Text>
@@ -50,6 +54,7 @@ YesNo.propTypes = {
   yes: PropTypes.string,
   no: PropTypes.string,
   defaultValue: PropTypes.bool,
+  onChange: PropTypes.func.isRequired,
 };
 
 YesNo.defaultProps = {

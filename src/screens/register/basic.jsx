@@ -20,15 +20,15 @@ const Basic = ({ navigation: { navigate } }) => (
   <>
     <ContentContainer>
       <Header text={REGISTER_HEADER} />
-      <EmptyDivider style={{ marginVertical: 16 }} />
+      <EmptyDivider />
       <Input iconName="user" placeholder={FIRST_NAME_INPUT} />
-      <EmptyDivider />
+      <EmptyDivider size="small" />
       <Input iconName="user" placeholder={SURNAME_INPUT} />
-      <EmptyDivider />
+      <EmptyDivider size="small" />
       <Input type="email" iconName="envelope" placeholder={EMAIL_INPUT} />
-      <EmptyDivider />
+      <EmptyDivider size="small" />
       <Input type="password" iconName="lock" placeholder={PASSWORD_INPUT} />
-      <EmptyDivider style={{ marginVertical: 32 }} />
+      <EmptyDivider size="big" />
       <Button onPress={() => navigate('PictureUpload')} text={SUBMIT_BUTTON} />
       <TextButton onPress={() => console.log()} text={SECONDARY_BUTTON} />
     </ContentContainer>

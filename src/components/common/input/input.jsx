@@ -14,9 +14,15 @@ const Input = ({
   iconType,
   iconColor,
   style,
+  onChange,
 }) => {
   const [value, onChangeValue] = useState('');
   const [focusColor, setFocusColor] = useState(null);
+
+  const handleChange = (v) => {
+    onChange(v);
+    onChangeValue(v);
+  };
 
   return (
     <View style={[styles.container, style]}>
@@ -40,7 +46,7 @@ const Input = ({
       <TextInput
         secureTextEntry={type === 'password'}
         style={styles.input}
-        onChangeText={(v) => onChangeValue(v)}
+        onChangeText={(v) => handleChange(v)}
         value={value}
         maxLength={maxLength}
         editable={!isReadOnly}
@@ -62,6 +68,7 @@ Input.propTypes = {
   iconType: PropTypes.string,
   iconColor: PropTypes.string,
   style: PropTypes.objectOf(PropTypes.string),
+  onChange: PropTypes.func,
 };
 
 Input.defaultProps = {
@@ -73,6 +80,7 @@ Input.defaultProps = {
   iconType: null,
   iconColor: MAIN_TEXT_COLOR,
   style: null,
+  onChange: null,
 };
 
 export default Input;

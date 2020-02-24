@@ -10,9 +10,9 @@ import Uploader from '../../components/common/uploader/uploader';
 const PictureUpload = ({ navigation: { navigate } }) => (
   <ContentContainer>
     <Header text={UPLOAD_HEADER} />
-    <EmptyDivider style={{ marginVertical: 16 }} />
+    <EmptyDivider />
     <Uploader uploadText={UPLOAD_PLACEHOLDER} />
-    <EmptyDivider style={{ marginVertical: 32 }} />
+    <EmptyDivider size="big" />
     <Button onPress={() => navigate('OtherInfo')} text={SUBMIT_BUTTON} />
   </ContentContainer>
 );
