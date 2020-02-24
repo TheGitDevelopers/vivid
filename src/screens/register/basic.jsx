@@ -30,7 +30,7 @@ const Basic = ({ navigation: { navigate } }) => (
       <Input type="password" iconName="lock" placeholder={PASSWORD_INPUT} />
       <EmptyDivider size="big" />
       <Button onPress={() => navigate('PictureUpload')} text={SUBMIT_BUTTON} />
-      <TextButton onPress={() => console.log()} text={SECONDARY_BUTTON} />
+      <TextButton onPress={() => {}} text={SECONDARY_BUTTON} />
     </ContentContainer>
   </>
 );

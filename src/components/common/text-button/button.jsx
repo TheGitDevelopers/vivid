@@ -6,10 +6,9 @@ import { DISABLED_COLOR, MAIN_TEXT_COLOR } from '../../../constants/theme/colors
 
 const styles = StyleSheet.create({
   button: {
-    width: '100%',
-    padding: 20,
     justifyContent: 'center',
     alignItems: 'center',
+    paddingVertical: 20,
   },
   text: {
     color: MAIN_TEXT_COLOR,

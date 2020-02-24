@@ -19,6 +19,15 @@ const STUDY_UNIVERISTY = 'Nazwa uczelni';
 const STUDY_FIELD = 'Kierunek';
 const STUDY_SEMESTER = 'Semestr';
 
+const FRIENDS_HEADER = 'Dodaj znajomych';
+const ADD_FRIEND = 'Dodaj znajomego';
+const ADD_FACEBOOK_FRIENDS = 'Znajomi z Facebook';
+const CREATE_ACCOUNT = 'Utwórz konto';
+const RULES_TEXT_FIRST = 'Klikając przycisk "utwórz konto" akceptujesz nasz';
+const RULES_LINK_FIRST = 'regulamin';
+const RULES_TEXT_SECOND = 'oraz';
+const RULES_LINK_SECOND = 'politykę prywatności.';
+
 
 export {
   REGISTER_HEADER,
@@ -38,4 +47,12 @@ export {
   STUDY_UNIVERISTY,
   STUDY_FIELD,
   STUDY_SEMESTER,
+  FRIENDS_HEADER,
+  ADD_FRIEND,
+  ADD_FACEBOOK_FRIENDS,
+  CREATE_ACCOUNT,
+  RULES_TEXT_FIRST,
+  RULES_LINK_FIRST,
+  RULES_TEXT_SECOND,
+  RULES_LINK_SECOND,
 };

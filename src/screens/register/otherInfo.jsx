@@ -33,7 +33,7 @@ const OtherInfo = ({ navigation: { navigate } }) => {
           iconName="gender-male-female"
           placeholder={OTHER_INFO_SEX}
         />
-        <EmptyDivider />
+        <EmptyDivider size="small" />
         <Input iconType="mci" iconName="cake-variant" placeholder={OTHER_INFO_AGE} />
         <EmptyDivider />
         <YesNo
@@ -43,7 +43,7 @@ const OtherInfo = ({ navigation: { navigate } }) => {
         />
         <EmptyDivider size="big" />
         <Button
-          onPress={() => navigate(isStudent ? 'EducationInfo' : 'Register')}
+          onPress={() => navigate(isStudent ? 'EducationInfo' : 'AddFriends')}
           text={SUBMIT_BUTTON}
         />
       </>

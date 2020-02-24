@@ -9,6 +9,7 @@ import OtherInfo from './src/screens/register/otherInfo';
 import { screenWithoutMenu } from './src/tools/showMenu';
 import educationReducer from './src/redux/reducers/register/education';
 import EducationInfo from './src/screens/register/educationInfo';
+import AddFriends from './src/screens/register/addFriends';
 
 const Stack = createStackNavigator();
 
@@ -37,6 +38,11 @@ const App = () => (
           <Stack.Screen
             name="EducationInfo"
             component={EducationInfo}
+            options={screenWithoutMenu}
+          />
+          <Stack.Screen
+            name="AddFriends"
+            component={AddFriends}
             options={screenWithoutMenu}
           />
         </Stack.Navigator>

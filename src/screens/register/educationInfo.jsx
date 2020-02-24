@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import ContentContainer from '../../components/common/containers/content-container/container';
 import {
   STUDY_HEADER,
@@ -18,6 +18,8 @@ import {
   setPersonSubject,
   setPersonSemester,
 } from '../../redux/actions/register';
+import eduList from '../../assets/data/eduList';
+import SelectBox from '../../components/common/select-box/selectBox';
 
 const EducationInfo = ({ navigation: { navigate } }) => {
   const dispatch = useDispatch();
@@ -39,14 +41,15 @@ const EducationInfo = ({ navigation: { navigate } }) => {
           placeholder={STUDY_FIELD}
         />
         <EmptyDivider size="small" />
-        <Input
-          onChange={(v) => dispatch(setPersonSemester(v))}
+        <SelectBox
+          list={eduList}
           iconName="calendar"
           placeholder={STUDY_SEMESTER}
+          onSelectItem={(v) => dispatch(setPersonSemester(v))}
         />
         <EmptyDivider size="small" />
         <EmptyDivider size="big" />
-        <Button onPress={() => navigate('Register')} text={SUBMIT_BUTTON} />
+        <Button onPress={() => navigate('AddFriends')} text={SUBMIT_BUTTON} />
       </>
     </ContentContainer>
   );

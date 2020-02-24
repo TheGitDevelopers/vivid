@@ -14,7 +14,7 @@ import { SimpleLineIcons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { MAIN_TEXT_COLOR, MAIN_THEME_COLOR } from '../../../constants/theme/colors';
 import styles from './styles';
 
-const SelectBox = ({ list, placeholder, iconName, iconType, iconColor }) => {
+const SelectBox = ({ list, placeholder, iconName, iconType, iconColor, onSelectItem }) => {
   const [selectedItem, setSelectedItem] = useState(null);
   const [value, setValue] = useState('');
   const [focusColor, setFocusColor] = useState(null);
@@ -37,6 +37,7 @@ const SelectBox = ({ list, placeholder, iconName, iconType, iconColor }) => {
 
   const selectItem = (item) => {
     setSelectedItem(item);
+    onSelectItem(item);
     setValue(item.label);
     setIsHiddenList(!isListHidden);
   };
@@ -114,17 +115,22 @@ const SelectBox = ({ list, placeholder, iconName, iconType, iconColor }) => {
 };
 
 SelectBox.propTypes = {
-  list: PropTypes.arrayOf(
-    PropTypes.oneOfType([
-      PropTypes.objectOf(PropTypes.string, PropTypes.number),
-      PropTypes.string,
-      PropTypes.number,
-    ]),
-  ).isRequired,
+  list: PropTypes.oneOfType([
+    PropTypes.arrayOf(
+      PropTypes.oneOfType([
+        PropTypes.objectOf(PropTypes.string, PropTypes.number),
+        PropTypes.objectOf(PropTypes.string, PropTypes.string, PropTypes.number),
+        PropTypes.object,
+        PropTypes.string,
+        PropTypes.number,
+      ]),
+    ),
+  ]).isRequired,
   placeholder: PropTypes.string,
   iconName: PropTypes.string,
   iconType: PropTypes.string,
   iconColor: PropTypes.string,
+  onSelectItem: PropTypes.func.isRequired,
 };
 
 SelectBox.defaultProps = {
