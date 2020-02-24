@@ -57,7 +57,7 @@ const Basic = ({ navigation: { navigate } }) => {
         />
         <EmptyDivider size="big" />
         <Button onPress={() => navigate('PictureUpload')} text={SUBMIT_BUTTON} />
-        <TextButton onPress={() => {}} text={SECONDARY_BUTTON} />
+        <TextButton onPress={() => navigate('Login')} text={SECONDARY_BUTTON} />
       </ContentContainer>
     </>
   );

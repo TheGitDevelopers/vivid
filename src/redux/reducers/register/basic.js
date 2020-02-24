@@ -1,6 +1,5 @@
-import { combineReducers } from 'redux';
 
-const basicInfoReducer = (state, action) => {
+const basicInfoReducer = (state = {}, action) => {
   switch (action.type) {
     case 'SET_PERSON_NAME':
       return { name: action.payload };
@@ -19,6 +18,4 @@ const basicInfoReducer = (state, action) => {
   }
 };
 
-export default combineReducers({
-  basicInfo: basicInfoReducer,
-});
+export default basicInfoReducer;

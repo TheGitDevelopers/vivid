@@ -1,4 +1,3 @@
-import { combineReducers } from 'redux';
 
 const INITIAL_STATE = {
   isStudent: true,
@@ -19,6 +18,4 @@ const educationReducer = (state = INITIAL_STATE, action) => {
   }
 };
 
-export default combineReducers({
-  education: educationReducer,
-});
+export default educationReducer;
