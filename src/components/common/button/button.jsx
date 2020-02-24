@@ -47,7 +47,7 @@ Button.propTypes = {
   style: PropTypes.objectOf(PropTypes.string),
   disabled: PropTypes.bool,
   iconColor: PropTypes.string,
-  iconName: PropTypes.oneOfType([PropTypes.string, null]),
+  iconName: PropTypes.string,
 };
 
 Button.defaultProps = {

@@ -61,6 +61,4 @@ EducationInfo.propTypes = {
   }).isRequired,
 };
 
-EducationInfo.defaultProps = {};
-
 export default EducationInfo;

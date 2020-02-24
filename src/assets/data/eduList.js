@@ -20,11 +20,11 @@ export default [{
 },
 {
   name: 'fifth',
-  label: 'V',
+  label: 'V semestr',
   id: 5,
 }, {
   name: 'sixth',
-  label: 'VI',
+  label: 'VI semestr',
   id: 6,
 },
 ];

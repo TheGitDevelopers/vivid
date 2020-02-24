@@ -32,6 +32,7 @@ const OtherInfo = ({ navigation: { navigate } }) => {
           iconType="mci"
           iconName="gender-male-female"
           placeholder={OTHER_INFO_SEX}
+          onSelectItem={(v) => dispatch(setIsStudent(v))}
         />
         <EmptyDivider size="small" />
         <Input iconType="mci" iconName="cake-variant" placeholder={OTHER_INFO_AGE} />

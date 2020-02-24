@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { SimpleLineIcons } from '@expo/vector-icons';
 import PropTypes from 'prop-types';
 import { View, TouchableWithoutFeedback, Text, Alert, StyleSheet, Image } from 'react-native';
@@ -36,8 +36,12 @@ const styles = StyleSheet.create({
   },
 });
 
-const Uploader = ({ uploadText }) => {
+const Uploader = ({ uploadText, onChange }) => {
   const [selectedImage, setSelectedImage] = useState(null);
+
+  useEffect(() => {
+    onChange(selectedImage);
+  }, [selectedImage]);
 
   const getPermission = async () => {
     const permissionResult = await ImagePicker.requestCameraRollPermissionsAsync();
@@ -73,8 +77,9 @@ const Uploader = ({ uploadText }) => {
   );
 };
 
-Uploader.propTypes = { uploadText: PropTypes.string.isRequired };
-
-Uploader.defaultProps = {};
+Uploader.propTypes = {
+  uploadText: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+};
 
 export default Uploader;

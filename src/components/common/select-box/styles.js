@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
   },
   input: {
     fontSize: NORMAL_TEXT_SIZE,
-    width: '90%',
+    width: '85%',
     padding: 14,
     color: MAIN_TEXT_COLOR
   },
