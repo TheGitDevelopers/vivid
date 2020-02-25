@@ -6,13 +6,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "test": "jest"
-  },
-  "jest": {
-    "preset": "jest-expo",
-    "transformIgnorePatterns": [
-      "node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base)"
-    ]
+    "test": "jest --watchAll"
   },
   "husky": {
     "hooks": {
@@ -41,10 +35,12 @@
     "react-native-screens": "2.0.0-alpha.12",
     "react-native-web": "~0.11.7",
     "react-redux": "^7.2.0",
+    "react-test-renderer": "^16.12.0",
     "redux": "^4.0.5"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.8.4",
     "babel-eslint": "^10.0.3",
     "babel-jest": "^25.1.0",
     "babel-preset-expo": "~8.0.0",
@@ -57,8 +53,7 @@
     "jest": "^25.1.0",
     "jest-expo": "^36.0.1",
     "lint-staged": "^10.0.7",
-    "prettier": "^1.19.1",
-    "react-test-renderer": "^16.12.0"
+    "prettier": "^1.19.1"
   },
   "private": true
 }
