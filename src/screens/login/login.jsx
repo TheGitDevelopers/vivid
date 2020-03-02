@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Header from '../../components/common/header/header';
 import ContentContainer from '../../components/common/containers/content-container/container';
@@ -9,17 +9,30 @@ import { EMAIL_INPUT, PASSWORD_INPUT } from '../../assets/texts/register';
 import { LOGIN_LOGIN_BUTTON, LOGIN_FORGOT_PASSWORD, LOGIN_HEADER } from '../../assets/texts/login';
 import TextButton from '../../components/common/text-button/button';
 
-const Login = ({ navigation: { navigate } }) => (
-  <>
+const Login = ({ navigation: { navigate } }) => {
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
+  const [errors, setErrors] = useState({ email: true, password: true });
+  const [isError, setIsError] = useState(true);
+
+  const handleOnError = (type, error) => {
+    const newState = { ...errors, [type]: error }
+    setErrors(newState)
+    Object.keys(newState).find((key) => newState[key] !== null) ? setIsError(true) : setIsError(false);
+  }
+
+  // TODO send credentials
+
+  return <>
     <ContentContainer>
       <Header text={LOGIN_HEADER} />
       <EmptyDivider />
-      <Input type="email" iconName="envelope" placeholder={EMAIL_INPUT} />
+      <Input type="email" iconName="envelope" onChange={(v) => setEmail(v)} onError={(err) => handleOnError('email', err)} placeholder={EMAIL_INPUT} />
       <EmptyDivider size="small" />
-      <Input type="password" iconName="lock" placeholder={PASSWORD_INPUT} />
+      <Input type="password" iconName="lock" onChange={(v) => setPassword(v)} onError={(err) => handleOnError('password', err)} placeholder={PASSWORD_INPUT} />
       <EmptyDivider size="big" />
       <EmptyDivider size="big" />
-      <Button onPress={() => navigate('Login')} text={LOGIN_LOGIN_BUTTON} />
+      <Button disabled={isError} onPress={() => navigate('Login')} text={LOGIN_LOGIN_BUTTON} />
       <TextButton
         onPress={() => {
           navigate('ForgotPassword');
@@ -28,7 +41,7 @@ const Login = ({ navigation: { navigate } }) => (
       />
     </ContentContainer>
   </>
-);
+};
 
 Login.propTypes = {
   navigation: PropTypes.shape({

@@ -17,6 +17,7 @@ const Input = ({
   style,
   onChange,
   inputType,
+  onError
 }) => {
   const [value, onChangeValue] = useState('');
   const [focusColor, setFocusColor] = useState(null);
@@ -25,7 +26,9 @@ const Input = ({
 
   useEffect(() => {
     if (errorMsg !== null) {
-      setErrorMsg(validate(value, inputType));
+      const error = validate(value, inputType);
+      setErrorMsg(error);
+      if (onError) onError(error)
     }
   }, [value]);
 
@@ -43,9 +46,10 @@ const Input = ({
 
   const handleBlur = () => {
     setFocusColor(iconColor);
-    setErrorMsg(validate(value, inputType));
+    const error = validate(value, inputType);
+    setErrorMsg(error);
+    if (onError) onError(error)
   };
-
   return (
     <>
       <View style={[styles.container, style]}>
@@ -58,12 +62,12 @@ const Input = ({
                 color={focusColor !== null ? focusColor : iconColor}
               />
             ) : (
-              <SimpleLineIcons
-                name={iconName}
-                size={24}
-                color={focusColor !== null ? focusColor : iconColor}
-              />
-            )}
+                <SimpleLineIcons
+                  name={iconName}
+                  size={24}
+                  color={focusColor !== null ? focusColor : iconColor}
+                />
+              )}
           </>
         ) : null}
         <TextInput
@@ -97,6 +101,7 @@ Input.propTypes = {
   style: PropTypes.objectOf(PropTypes.string),
   onChange: PropTypes.func,
   inputType: PropTypes.string,
+  onError: PropTypes.func,
 };
 
 Input.defaultProps = {
@@ -110,6 +115,7 @@ Input.defaultProps = {
   style: null,
   onChange: null,
   inputType: 'text',
+  onError: null,
 };
 
 export default Input;
