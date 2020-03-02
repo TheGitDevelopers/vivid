@@ -2,7 +2,7 @@ import React from 'react';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import PropTypes from 'prop-types';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { NORMAL_TEXT_SIZE } from '../../../constants/theme/typography';
+import { NORMAL_TEXT_SIZE, NORMAL_TEXT_FONT_FAMILY } from '../../../constants/theme/typography';
 import { DISABLED_COLOR, MAIN_THEME_COLOR } from '../../../constants/theme/colors';
 
 const styles = StyleSheet.create({
@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     color: '#ffffff',
     fontSize: NORMAL_TEXT_SIZE,
+    fontFamily: NORMAL_TEXT_FONT_FAMILY,
   },
   disabled: {
     backgroundColor: DISABLED_COLOR,

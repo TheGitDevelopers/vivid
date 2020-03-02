@@ -16,7 +16,7 @@ import Input from '../../components/common/input/input';
 import YesNo from '../../components/forms/yes-no/yesNo';
 import SelectBox from '../../components/common/select-box/selectBox';
 import sexList from '../../assets/data/sexList';
-import { setIsStudent } from '../../redux/actions/register';
+import { setIsStudent, setPersonSex } from '../../redux/actions/register';
 
 const OtherInfo = ({ navigation: { navigate } }) => {
   const isStudent = useSelector((state) => state.education.isStudent);
@@ -32,7 +32,7 @@ const OtherInfo = ({ navigation: { navigate } }) => {
           iconType="mci"
           iconName="gender-male-female"
           placeholder={OTHER_INFO_SEX}
-          onSelectItem={(v) => dispatch(setIsStudent(v))}
+          onSelectItem={(v) => dispatch(setPersonSex(v))}
         />
         <EmptyDivider size="small" />
         <Input iconType="mci" iconName="cake-variant" placeholder={OTHER_INFO_AGE} />

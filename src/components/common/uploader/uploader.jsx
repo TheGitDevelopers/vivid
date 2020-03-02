@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { View, TouchableWithoutFeedback, Text, Alert, StyleSheet, Image } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import { SECONDARY_THEME_COLOR, MAIN_TEXT_COLOR } from '../../../constants/theme/colors';
-import { NORMAL_TEXT_SIZE } from '../../../constants/theme/typography';
+import { NORMAL_TEXT_SIZE, NORMAL_TEXT_FONT_FAMILY } from '../../../constants/theme/typography';
 import { width } from '../../../assets/data/screenData';
 
 const styles = StyleSheet.create({
@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: NORMAL_TEXT_SIZE,
+    fontFamily: NORMAL_TEXT_FONT_FAMILY,
     color: MAIN_TEXT_COLOR,
   },
   image: {

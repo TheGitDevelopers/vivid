@@ -19,7 +19,7 @@ const Login = ({ navigation: { navigate } }) => (
       <Input type="password" iconName="lock" placeholder={PASSWORD_INPUT} />
       <EmptyDivider size="big" />
       <EmptyDivider size="big" />
-      <Button onPress={() => navigate('BeerMain')} text={LOGIN_LOGIN_BUTTON} />
+      <Button onPress={() => navigate('Login')} text={LOGIN_LOGIN_BUTTON} />
       <TextButton
         onPress={() => {
           navigate('ForgotPassword');

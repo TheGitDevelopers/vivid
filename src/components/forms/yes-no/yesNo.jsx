@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
 import { MAIN_THEME_COLOR, MAIN_TEXT_COLOR } from '../../../constants/theme/colors';
-import { NORMAL_TEXT_SIZE, HEADER_TEXT_SIZE } from '../../../constants/theme/typography';
+import {
+  NORMAL_TEXT_SIZE,
+  HEADER_TEXT_SIZE,
+  NORMAL_TEXT_FONT_FAMILY,
+} from '../../../constants/theme/typography';
 import EmptyDivider from '../../common/dividers/emptyDivider';
 
 const styles = StyleSheet.create({
@@ -15,6 +19,7 @@ const styles = StyleSheet.create({
   question: {
     color: MAIN_TEXT_COLOR,
     fontSize: NORMAL_TEXT_SIZE,
+    fontFamily: NORMAL_TEXT_FONT_FAMILY,
   },
   text: {
     color: MAIN_TEXT_COLOR,

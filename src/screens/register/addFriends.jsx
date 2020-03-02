@@ -39,7 +39,7 @@ const AddFriends = ({ navigation: { navigate } }) => (
       <EmptyDivider size="small" />
       <Button onPress={() => navigate('Login')} text={CREATE_ACCOUNT} />
       <EmptyDivider size="big" />
-      <Text style={{ color: MAIN_TEXT_COLOR }}>{RULES_TEXT_FIRST}</Text>
+      <Text style={{ color: MAIN_TEXT_COLOR, textAlign: 'center' }}>{RULES_TEXT_FIRST}</Text>
       <View style={{ flexDirection: 'row' }}>
         <TouchableOpacity onPress={() => {}}>
           <Text style={{ color: MAIN_THEME_COLOR }}>{RULES_LINK_FIRST}</Text>

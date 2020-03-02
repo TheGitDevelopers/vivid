@@ -1,4 +1,6 @@
-import React from 'react';
+/* eslint-disable global-require */
+import React, { useEffect, useState } from 'react';
+import * as Font from 'expo-font';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Provider } from 'react-redux';
@@ -18,55 +20,71 @@ const Stack = createStackNavigator();
 
 const store = createStore(reducer);
 
-const App = () => (
-  <>
-    <Provider store={store}>
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen
-            name="Register"
-            component={Basic}
-            options={screenWithoutMenu}
-          />
-          <Stack.Screen
-            name="Login"
-            component={Login}
-            options={screenWithoutMenu}
-          />
-          <Stack.Screen
-            name="ForgotPassword"
-            component={ForgotPassword}
-            options={screenWithoutMenu}
-          />
-          <Stack.Screen
-            name="NewPassword"
-            component={NewPassword}
-            options={screenWithoutMenu}
-          />
-          <Stack.Screen
-            name="PictureUpload"
-            component={PictureUpload}
-            options={screenWithoutMenu}
-          />
-          <Stack.Screen
-            name="OtherInfo"
-            component={OtherInfo}
-            options={screenWithoutMenu}
-          />
-          <Stack.Screen
-            name="EducationInfo"
-            component={EducationInfo}
-            options={screenWithoutMenu}
-          />
-          <Stack.Screen
-            name="AddFriends"
-            component={AddFriends}
-            options={screenWithoutMenu}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </Provider>
-  </>
-);
+const App = () => {
+  const [isFontLoaded, setIsFontLoaded] = useState(false);
+  useEffect(() => {
+    async function loadFonts() {
+      await Font.loadAsync({
+        'lato-regular': require('./assets/fonts/Lato-Regular.ttf'),
+        'lato-bold': require('./assets/fonts/Lato-Bold.ttf'),
+      });
+      setIsFontLoaded(true);
+    }
+    loadFonts();
+  }, [isFontLoaded]);
+
+  return (
+    <>
+      {isFontLoaded ? (
+        <Provider store={store}>
+          <NavigationContainer>
+            <Stack.Navigator>
+              <Stack.Screen
+                name="Register"
+                component={Basic}
+                options={screenWithoutMenu}
+              />
+              <Stack.Screen
+                name="Login"
+                component={Login}
+                options={screenWithoutMenu}
+              />
+              <Stack.Screen
+                name="ForgotPassword"
+                component={ForgotPassword}
+                options={screenWithoutMenu}
+              />
+              <Stack.Screen
+                name="NewPassword"
+                component={NewPassword}
+                options={screenWithoutMenu}
+              />
+              <Stack.Screen
+                name="PictureUpload"
+                component={PictureUpload}
+                options={screenWithoutMenu}
+              />
+              <Stack.Screen
+                name="OtherInfo"
+                component={OtherInfo}
+                options={screenWithoutMenu}
+              />
+              <Stack.Screen
+                name="EducationInfo"
+                component={EducationInfo}
+                options={screenWithoutMenu}
+              />
+              <Stack.Screen
+                name="AddFriends"
+                component={AddFriends}
+                options={screenWithoutMenu}
+              />
+            </Stack.Navigator>
+          </NavigationContainer>
+        </Provider>
+      ) : null}
+    </>
+  );
+};
 
 export default App;

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { NORMAL_TEXT_SIZE } from '../../../constants/theme/typography';
+import { NORMAL_TEXT_SIZE, NORMAL_TEXT_FONT_FAMILY } from '../../../constants/theme/typography';
 import { DISABLED_COLOR, MAIN_TEXT_COLOR } from '../../../constants/theme/colors';
 
 const styles = StyleSheet.create({
@@ -13,6 +13,7 @@ const styles = StyleSheet.create({
   text: {
     color: MAIN_TEXT_COLOR,
     fontSize: NORMAL_TEXT_SIZE,
+    fontFamily: NORMAL_TEXT_FONT_FAMILY,
   },
   disabled: {
     color: DISABLED_COLOR,

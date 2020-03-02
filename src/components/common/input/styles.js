@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { SECONDARY_THEME_COLOR, MAIN_TEXT_COLOR, ERROR_COLOR } from '../../../constants/theme/colors';
-import { NORMAL_TEXT_SIZE, VALIDATOR_TEXT_SIZE } from '../../../constants/theme/typography';
+import { NORMAL_TEXT_SIZE, VALIDATOR_TEXT_SIZE, NORMAL_TEXT_FONT_FAMILY } from '../../../constants/theme/typography';
 
 
 const styles = StyleSheet.create({
@@ -15,6 +15,7 @@ const styles = StyleSheet.create({
   },
   input: {
     fontSize: NORMAL_TEXT_SIZE,
+    fontFamily: NORMAL_TEXT_FONT_FAMILY,
     width: '90%',
     padding: 14,
     color: MAIN_TEXT_COLOR
