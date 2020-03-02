@@ -2,11 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { View, TextInput, Text } from 'react-native';
 import { SimpleLineIcons, MaterialCommunityIcons } from '@expo/vector-icons';
 import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
 import styles from './styles';
 import { MAIN_TEXT_COLOR, MAIN_THEME_COLOR } from '../../../constants/theme/colors';
 import validate from '../../../tools/validators/validate';
-import setInputError from '../../../redux/actions/error';
 
 const Input = ({
   isReadOnly,
@@ -24,11 +22,6 @@ const Input = ({
   const [focusColor, setFocusColor] = useState(null);
   const [isTouched, setIsTouched] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(setInputError(errorMsg !== null));
-  }, [errorMsg]);
 
   useEffect(() => {
     if (errorMsg !== null) {

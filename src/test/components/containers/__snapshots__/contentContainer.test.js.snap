@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContentContainer tests: renders correctly 1`] = `
+<View
+  accessible={false}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#FFFFFF",
+      "flex": 1,
+    }
+  }
+>
+  <RCTScrollView
+    contentContainerStyle={
+      Object {
+        "alignItems": "center",
+        "justifyContent": "flex-start",
+        "paddingHorizontal": 30,
+        "paddingVertical": 50,
+      }
+    }
+    nestedScrollEnabled={true}
+  >
+    <View>
+      <Text>
+        Content
+      </Text>
+    </View>
+  </RCTScrollView>
+</View>
+`;

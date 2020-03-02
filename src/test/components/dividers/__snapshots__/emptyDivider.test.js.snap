@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EmptyDivider tests: renders correctly 1`] = `
+<View
+  style={
+    Array [
+      null,
+      null,
+      Object {
+        "marginVertical": 16,
+      },
+      null,
+    ]
+  }
+/>
+`;

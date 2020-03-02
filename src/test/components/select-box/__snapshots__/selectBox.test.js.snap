@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SelectBox tests: renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "width": "100%",
+    }
+  }
+>
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#F0F4F8",
+        "borderRadius": 6,
+        "flexDirection": "row",
+        "justifyContent": "center",
+        "paddingLeft": 20,
+        "paddingRight": 30,
+        "width": "100%",
+      }
+    }
+  >
+    <TextInput
+      allowFontScaling={true}
+      editable={false}
+      placeholder=""
+      rejectResponderTermination={true}
+      style={
+        Object {
+          "color": "#A6BCD0",
+          "fontSize": 16,
+          "padding": 14,
+          "width": "85%",
+        }
+      }
+      underlineColorAndroid="transparent"
+      value=""
+    />
+    <View
+      style={
+        Object {
+          "transform": Array [
+            Object {
+              "rotate": "0deg",
+            },
+          ],
+        }
+      }
+    >
+      <Text />
+    </View>
+  </View>
+</View>
+`;
