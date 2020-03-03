@@ -1,1 +1,1 @@
-"d:\Android_Studio_SDK\emulator\emulator.exe" -avd Pixel_2_API_29 -dns-server 8.8.8.8
+"%ANDROID_HOME%\emulator\emulator.exe" -avd Nexus_5X_API_29_x86 -dns-server 8.8.8.8

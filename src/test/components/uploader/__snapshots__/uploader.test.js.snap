@@ -35,6 +35,7 @@ exports[`Uploader tests: renders correctly 1`] = `
     style={
       Object {
         "color": "#A6BCD0",
+        "fontFamily": "lato-regular",
         "fontSize": 16,
       }
     }

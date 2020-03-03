@@ -27,9 +27,21 @@ const Login = ({ navigation: { navigate } }) => {
     <ContentContainer>
       <Header text={LOGIN_HEADER} />
       <EmptyDivider />
-      <Input type="email" iconName="envelope" onChange={(v) => setEmail(v)} onError={(err) => handleOnError('email', err)} placeholder={EMAIL_INPUT} />
+      <Input
+        autoCompleteType="email"
+        inputType="email"
+        iconName="envelope"
+        onChange={(v) => setEmail(v)}
+        onError={(err) => handleOnError('email', err)}
+        placeholder={EMAIL_INPUT} />
       <EmptyDivider size="small" />
-      <Input type="password" iconName="lock" onChange={(v) => setPassword(v)} onError={(err) => handleOnError('password', err)} placeholder={PASSWORD_INPUT} />
+      <Input
+        autoCompleteType="password"
+        inputType="password"
+        iconName="lock"
+        onChange={(v) => setPassword(v)}
+        onError={(err) => handleOnError('password', err)}
+        placeholder={PASSWORD_INPUT} />
       <EmptyDivider size="big" />
       <EmptyDivider size="big" />
       <Button disabled={isError} onPress={() => navigate('Login')} text={LOGIN_LOGIN_BUTTON} />

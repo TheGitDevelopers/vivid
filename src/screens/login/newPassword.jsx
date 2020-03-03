@@ -19,7 +19,7 @@ const NewPassword = ({ navigation: { navigate } }) => (
       <EmptyDivider />
       <Input iconName="shield" placeholder={FORGOT_PASSWORD_TOKEN} />
       <EmptyDivider size="small" />
-      <Input type="password" iconName="lock" placeholder={FORGOT_PASSOWRD_NEW_PASSWORD} />
+      <Input autoCompleteType="password" inputType="password" iconName="lock" placeholder={FORGOT_PASSOWRD_NEW_PASSWORD} />
       <EmptyDivider size="big" />
       <Button onPress={() => navigate('Login')} text={FORGOT_PASSWORD_RESET_BUTTON} />
     </ContentContainer>

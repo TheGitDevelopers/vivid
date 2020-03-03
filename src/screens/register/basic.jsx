@@ -56,20 +56,23 @@ const Basic = ({ navigation: { navigate } }) => {
         <Input
           onChange={(v) => dispatch(setPersonEmail(v))}
           onError={(err) => handleOnError('email', err)}
-          type="email"
+          autoCompleteType="email"
+          inputType="email"
           iconName="envelope"
           placeholder={EMAIL_INPUT}
         />
         <EmptyDivider size="small" />
         <Input
+          minLength={8}
           onChange={(v) => dispatch(setPersonPassword(v))}
           onError={(err) => handleOnError('password', err)}
-          type="password"
+          autoCompleteType="password"
+          inputType="password"
           iconName="lock"
           placeholder={PASSWORD_INPUT}
         />
         <EmptyDivider size="big" />
-        <Button disabled={isError} onPress={() => navigate('OtherInfo')} text={SUBMIT_BUTTON} />
+        <Button disabled={isError} onPress={() => navigate('PictureUpload')} text={SUBMIT_BUTTON} />
         <TextButton onPress={() => navigate('Login')} text={SECONDARY_BUTTON} />
       </ContentContainer>
     </>

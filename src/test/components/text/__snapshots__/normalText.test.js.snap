@@ -6,6 +6,7 @@ exports[`NormalText tests: renders correctly 1`] = `
     Array [
       Object {
         "color": "#A6BCD0",
+        "fontFamily": "lato-regular",
         "fontSize": 16,
       },
       null,

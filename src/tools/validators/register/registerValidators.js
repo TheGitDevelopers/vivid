@@ -15,9 +15,12 @@ const validateAge = (age) => {
   return parsedAge > 18 && parsedAge < 99;
 };
 
+const validateMinLength = (valLength, minLength) => valLength > minLength;
+
 export {
   validateEmail,
   validatePassword,
   validateIsNotEmpty,
-  validateAge
+  validateAge,
+  validateMinLength
 };

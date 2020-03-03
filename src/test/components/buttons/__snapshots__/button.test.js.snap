@@ -40,6 +40,7 @@ exports[`Button tests: renders correctly 1`] = `
       style={
         Object {
           "color": "#ffffff",
+          "fontFamily": "lato-regular",
           "fontSize": 16,
           "textTransform": "uppercase",
         }

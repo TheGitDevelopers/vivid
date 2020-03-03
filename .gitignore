@@ -19,5 +19,7 @@ vscode
 !.vscode/extensions.json
 *.code-workspace
 
+run_pixel_emulator_script.bat
+
 # macOS
 .DS_Store

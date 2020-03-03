@@ -39,6 +39,7 @@ exports[`SelectBox tests: renders correctly 1`] = `
       style={
         Object {
           "color": "#A6BCD0",
+          "fontFamily": "lato-regular",
           "fontSize": 16,
           "padding": 14,
           "width": "85%",

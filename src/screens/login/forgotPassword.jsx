@@ -29,12 +29,18 @@ const ForgotPassword = ({ navigation: { navigate } }) => {
       <ContentContainer>
         <Header text={FORGOT_PASSWORD_HEADER} />
         <EmptyDivider />
-        <Input type="email" onChange={(v) => setEmail(v)} onError={(err) => handleOnError('email', err)} iconName="envelope" placeholder={EMAIL_INPUT} />
+        <Input
+          autoCompleteType="email"
+          inputType="email"
+          onChange={(v) => setEmail(v)}
+          onError={(err) => handleOnError('email', err)}
+          iconName="envelope"
+          placeholder={EMAIL_INPUT} />
         <EmptyDivider size="small" />
         <NormalText text={FORGOT_PASSWORD_TEXT} />
         <EmptyDivider size="big" />
         <EmptyDivider size="big" />
-        <Button onPress={() => navigate('NewPassword')} text={FORGOT_PASSWORD_RESET_BUTTON} />
+        <Button disabled={isError} onPress={() => navigate('NewPassword')} text={FORGOT_PASSWORD_RESET_BUTTON} />
       </ContentContainer>
     </>
   )
