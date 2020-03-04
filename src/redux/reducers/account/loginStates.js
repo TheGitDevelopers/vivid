@@ -4,17 +4,17 @@ const initialState = {
     error: null,
 }
 
-const registerFetchStates = (state = initialState, action) => {
+const loginStates = (state = initialState, action) => {
     switch (action.type) {
-        case 'CREATE_ACCOUNT_PENDING':
+        case 'LOGIN_PENDING':
             return { ...state, loading: true };
-        case 'CREATE_ACCOUNT_SUCCESS':
+        case 'LOGIN_SUCCESS':
             return { ...state, success: true, loading: false };
-        case 'CREATE_ACCOUNT_ERR':
+        case 'LOGIN_ERR':
             return { ...state, success: false, err: action.payload, loading: false };
         default:
             return state;
     }
 };
 
-export default registerFetchStates;
+export default loginStates;

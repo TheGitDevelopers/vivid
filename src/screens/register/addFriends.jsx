@@ -21,12 +21,12 @@ import {
   MAIN_THEME_COLOR,
   FACEBOOK_BLUE_COLOR,
 } from '../../constants/theme/colors';
-import { createAccount } from '../../redux/actions/register';
+import { fetchCreateAccount } from '../../redux/actions/register';
 import { useDispatch, useSelector } from 'react-redux';
 
 const AddFriends = ({ navigation: { navigate } }) => {
   const dispatch = useDispatch();
-  const { loading, err } = useSelector(({ registerFetchStates: { loading, err } }) => ({ loading, err }))
+  const { loading, err } = useSelector(({ registerStates: { loading, err } }) => ({ loading, err }))
   return (
     <>
       <ContentContainer>
@@ -44,7 +44,7 @@ const AddFriends = ({ navigation: { navigate } }) => {
         <EmptyDivider size="small" />
         <Button
           disabled={loading || err}
-          onPress={() => dispatch(createAccount(navigate))}
+          onPress={() => dispatch(fetchCreateAccount(navigate))}
           iconName={loading ? 'loading' : null}
           text={!loading && !err ? CREATE_ACCOUNT : null} />
         <EmptyDivider size="big" />

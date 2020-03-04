@@ -54,18 +54,15 @@ const setIsStudent = (isStudent) => ({
 }
 );
 
-// const createAccount = (credentials) => ({
-//   type: 'CREATE_ACCOUNT',
-//   payload: credentials,
-// }
-// );
-
-const createAccount = (navigate) => (dispatch, getState) => {
+const fetchCreateAccount = (navigate) => (dispatch, getState) => {
   dispatch({ type: 'CREATE_ACCOUNT_PENDING' })
-  const state = getState();
-  fetch('....', {
-    body: JSON.stringify({ basicInfo: state.basicInfo, education: state.basicInfo })
-  })
+  const { state: { basicInfo, education } } = getState();
+  fetch('...',
+    { // TODO
+      method: "POST",
+      body: JSON.stringify({ basicInfo, education })
+    }
+  )
     .then(res => {
       dispatch({
         type: 'CREATE_ACCOUNT_SUCCESS',
@@ -83,5 +80,5 @@ const createAccount = (navigate) => (dispatch, getState) => {
 export {
   setPersonName, setPersonSurname, setPersonEmail, setPersonPassword,
   setPersonImage, setPersonSex, setPersonAge, setIsStudent,
-  setPersonUniversity, setPersonSubject, setPersonSemester, createAccount
+  setPersonUniversity, setPersonSubject, setPersonSemester, fetchCreateAccount
 };
