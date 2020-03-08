@@ -26,9 +26,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 const AddFriends = ({ navigation: { navigate } }) => {
   const dispatch = useDispatch();
-  // const { loading, fetchingErr } = useSelector(({ registerStates: { loading, err } }) => ({ loading, fetchingErr: err }))
-  const fetchingErr = false;
-  const loading = true;
+  const { loading, fetchingErr } = useSelector(({ registerStates: { loading, err } }) => ({ loading, fetchingErr: err }))
   return (
     <>
       <ContentContainer>
