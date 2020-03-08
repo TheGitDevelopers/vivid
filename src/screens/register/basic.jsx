@@ -25,13 +25,13 @@ import {
 
 const Basic = ({ navigation: { navigate } }) => {
   const [errors, setErrors] = useState({ firstName: true, surName: true, email: true, password: true });
-  const [isError, setIsError] = useState(true);
+  const [isErrorValidation, setIsErrorValidation] = useState(true);
   const dispatch = useDispatch();
 
   const handleOnError = (type, error) => {
     const newState = { ...errors, [type]: error }
     setErrors(newState)
-    Object.keys(newState).find((key) => newState[key] !== null) ? setIsError(true) : setIsError(false);
+    Object.keys(newState).find((key) => newState[key] !== null) ? setIsErrorValidation(true) : setIsErrorValidation(false);
   }
 
   return (
@@ -72,7 +72,7 @@ const Basic = ({ navigation: { navigate } }) => {
           placeholder={PASSWORD_INPUT}
         />
         <EmptyDivider size="big" />
-        <Button disabled={isError} onPress={() => navigate('PictureUpload')} text={SUBMIT_BUTTON} />
+        <Button disabled={isErrorValidation} onPress={() => navigate('PictureUpload')} text={SUBMIT_BUTTON} />
         <TextButton onPress={() => navigate('Login')} text={SECONDARY_BUTTON} />
       </ContentContainer>
     </>

@@ -54,9 +54,31 @@ const setIsStudent = (isStudent) => ({
 }
 );
 
+const fetchCreateAccount = (navigate) => (dispatch, getState) => {
+  dispatch({ type: 'CREATE_ACCOUNT_PENDING' })
+  const { state: { basicInfo, education } } = getState();
+  fetch('...',
+    { // TODO
+      method: "POST",
+      body: JSON.stringify({ basicInfo, education })
+    }
+  )
+    .then(res => {
+      dispatch({
+        type: 'CREATE_ACCOUNT_SUCCESS',
+        payload: res,
+      })
+      navigate('login') //todo
+    })
+    .catch(err => dispatch({
+      type: 'CREATE_ACCOUNT_ERR',
+      payload: err
+    }))
+};
+
 
 export {
   setPersonName, setPersonSurname, setPersonEmail, setPersonPassword,
   setPersonImage, setPersonSex, setPersonAge, setIsStudent,
-  setPersonUniversity, setPersonSubject, setPersonSemester
+  setPersonUniversity, setPersonSubject, setPersonSemester, fetchCreateAccount
 };

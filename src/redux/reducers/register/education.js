@@ -6,13 +6,13 @@ const INITIAL_STATE = {
 const educationReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case 'SET_IS_STUDENT':
-      return { isStudent: action.payload };
+      return { ...state, isStudent: action.payload };
     case 'SET_PERSON_SQL':
-      return { personSql: action.payload };
+      return { ...state, personSql: action.payload };
     case 'SET_PERSON_SUBJECT':
-      return { personSubject: action.payload };
+      return { ...state, personSubject: action.payload };
     case 'SET_PERSON_SEMESTER':
-      return { personSemester: action.payload };
+      return { ...state, personSemester: action.payload };
     default:
       return state;
   }

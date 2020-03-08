@@ -12,16 +12,22 @@ import {
   FORGOT_PASSWORD_TEXT,
 } from '../../assets/texts/login';
 import NormalText from '../../components/common/text/normalText';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchForgotPassword } from '../../redux/actions/account/forgotPassword';
 
 const ForgotPassword = ({ navigation: { navigate } }) => {
+  const dispatch = useDispatch();
+
+  const { loading, fetchingErr } = useSelector(({ forgotPasswordStates: { loading, err } }) => ({ loading, fetchingErr: err }))
+
   const [email, setEmail] = useState(null);
-  const [errors, setErrors] = useState({ firstName: true, surName: true, email: true, password: true });
-  const [isError, setIsError] = useState(true);
+  const [errorsFields, setErrorsFields] = useState({ email: true });
+  const [isErrorValidation, setIsErrorValidation] = useState(true);
 
   const handleOnError = (type, error) => {
-    const newState = { ...errors, [type]: error }
-    setErrors(newState)
-    Object.keys(newState).find((key) => newState[key] !== null) ? setIsError(true) : setIsError(false);
+    const newState = { ...errorsFields, [type]: error }
+    setErrorsFields(newState)
+    Object.keys(newState).find((key) => newState[key] !== null) ? setIsErrorValidation(true) : setIsErrorValidation(false);
   }
 
   return (
@@ -30,17 +36,19 @@ const ForgotPassword = ({ navigation: { navigate } }) => {
         <Header text={FORGOT_PASSWORD_HEADER} />
         <EmptyDivider />
         <Input
-          autoCompleteType="email"
-          inputType="email"
           onChange={(v) => setEmail(v)}
           onError={(err) => handleOnError('email', err)}
+          autoCompleteType="email"
+          inputType="email"
           iconName="envelope"
           placeholder={EMAIL_INPUT} />
         <EmptyDivider size="small" />
         <NormalText text={FORGOT_PASSWORD_TEXT} />
         <EmptyDivider size="big" />
         <EmptyDivider size="big" />
-        <Button disabled={isError} onPress={() => navigate('NewPassword')} text={FORGOT_PASSWORD_RESET_BUTTON} />
+        <Button disabled={isErrorValidation || loading || fetchingErr}
+          iconName={loading ? 'loading' : null} onPress={() => dispatch(fetchForgotPassword(email, navigate))}
+          text={FORGOT_PASSWORD_RESET_BUTTON} />
       </ContentContainer>
     </>
   )

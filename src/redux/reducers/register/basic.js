@@ -2,17 +2,17 @@
 const basicInfoReducer = (state = {}, action) => {
   switch (action.type) {
     case 'SET_PERSON_NAME':
-      return { name: action.payload };
+      return { ...state, name: action.payload };
     case 'SET_PERSON_SURNAME':
-      return { surname: action.payload };
+      return { ...state, surname: action.payload };
     case 'SET_PERSON_EMAIL':
-      return { email: action.payload };
+      return { ...state, email: action.payload };
     case 'SET_PERSON_PASSWORD':
-      return { pass: action.payload };
+      return { ...state, pass: action.payload };
     case 'SET_PERSON_IMAGE':
-      return { image: action.payload };
+      return { ...state, image: action.payload };
     case 'SET_PERSON_SEX':
-      return { sex: action.payload };
+      return { ...state, sex: action.payload };
     default:
       return state;
   }
