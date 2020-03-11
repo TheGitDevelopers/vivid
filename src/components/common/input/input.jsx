@@ -18,12 +18,14 @@ const Input = ({
   style,
   onChange,
   inputType,
-  onError
+  onError,
 }) => {
   const [value, onChangeValue] = useState('');
   const [focusColor, setFocusColor] = useState(null);
   const [isTouched, setIsTouched] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
+
+  const iconColorStatement = focusColor !== null ? focusColor : iconColor;
 
   useEffect(() => {
     if (errorMsg !== null) {
@@ -43,11 +45,6 @@ const Input = ({
     setIsTouched(true);
   };
 
-  const handleBlur = () => {
-    setFocusColor(iconColor);
-    handleValidation();
-  };
-
   const handleValidation = () => {
     let error;
     if (minLength) {
@@ -55,8 +52,13 @@ const Input = ({
     }
     if (!error) error = validate(value, inputType);
     setErrorMsg(error);
-    if (onError) onError(error)
-  }
+    if (onError) onError(error);
+  };
+
+  const handleBlur = () => {
+    setFocusColor(iconColor);
+    handleValidation();
+  };
 
   return (
     <>
@@ -64,18 +66,10 @@ const Input = ({
         {iconName ? (
           <>
             {iconType === 'mci' ? (
-              <MaterialCommunityIcons
-                name={iconName}
-                size={34}
-                color={focusColor !== null ? focusColor : iconColor}
-              />
+              <MaterialCommunityIcons name={iconName} size={34} color={iconColorStatement} />
             ) : (
-                <SimpleLineIcons
-                  name={iconName}
-                  size={24}
-                  color={focusColor !== null ? focusColor : iconColor}
-                />
-              )}
+              <SimpleLineIcons name={iconName} size={24} color={iconColorStatement} />
+            )}
           </>
         ) : null}
         <TextInput
