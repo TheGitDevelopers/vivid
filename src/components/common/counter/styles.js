@@ -8,7 +8,7 @@ import {
   NORMAL_TEXT_SIZE,
   VALIDATOR_TEXT_SIZE,
   NORMAL_TEXT_FONT_FAMILY,
-} from '../../../constants/theme/typography';
+} from '../../../constants/theme/colors';
 
 const styles = StyleSheet.create({
   container: {
@@ -23,9 +23,14 @@ const styles = StyleSheet.create({
   input: {
     fontSize: NORMAL_TEXT_SIZE,
     fontFamily: NORMAL_TEXT_FONT_FAMILY,
-    width: '90%',
+    flex: 1,
     padding: 14,
     color: MAIN_TEXT_COLOR,
+  },
+  touchableIcon: {
+    width: 34,
+    padding: 7,
+    textAlign: 'center',
   },
   error: {
     color: ERROR_COLOR,
