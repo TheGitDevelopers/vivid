@@ -20,5 +20,9 @@ vscode
 !.vscode/extensions.json
 *.code-workspace
 
+__snapshots__
+
+run_pixel_emulator_script.bat
+
 # macOS
 .DS_Store
