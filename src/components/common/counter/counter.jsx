@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { View, TextInput, Text } from 'react-native';
+import { View, TextInput, Text, TouchableOpacity } from 'react-native';
 import { SimpleLineIcons, MaterialCommunityIcons, Ionicons, FontAwesome } from '@expo/vector-icons';
 import PropTypes from 'prop-types';
 import styles from './styles';
-import { MAIN_TEXT_COLOR, MAIN_THEME_COLOR } from '../../../constants/theme/colors';
+import {
+  MAIN_TEXT_COLOR,
+  MAIN_THEME_COLOR,
+  SECONDARY_TEXT_COLOR,
+} from '../../../constants/theme/colors';
 import validate from '../../../tools/validators/validate';
 
 const iconStyle = {
@@ -11,34 +15,45 @@ const iconStyle = {
   textAlign: 'center',
 };
 
-const Input = ({
+const touchableIconStyle = {
+  width: 34,
+  padding: 7,
+  textAlign: 'center',
+};
+
+const Counter = ({
   isReadOnly,
-  type,
   placeholder,
+  min,
+  max,
   maxLength,
   iconName,
   iconType,
   iconColor,
   style,
   onChange,
-  inputType,
+  required,
 }) => {
-  const [value, onChangeValue] = useState('');
+  const [value, onChangeValue] = useState(0);
   const [focusColor, setFocusColor] = useState(null);
   const [isTouched, setIsTouched] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
 
   useEffect(() => {
-    if (errorMsg !== null) {
-      setErrorMsg(validate(value, inputType));
+    if (errorMsg !== null && required) {
+      setErrorMsg(validate(value, 'text'));
     }
   }, [value]);
 
   const handleChange = (v) => {
+    let newVal = v;
+    if (!v.length) newVal = 0;
+    if (!new RegExp(/^(0|[1-9][0-9]*)$/).test(newVal)) return;
+    if (parseInt(newVal) > max || parseInt(newVal) < min) return;
     if (onChange) {
-      onChange(v);
+      onChange(newVal);
     }
-    onChangeValue(v);
+    onChangeValue(newVal);
   };
 
   const handleFocus = () => {
@@ -48,7 +63,24 @@ const Input = ({
 
   const handleBlur = () => {
     setFocusColor(iconColor);
-    setErrorMsg(validate(value, inputType));
+    if (required) setErrorMsg(validate(value, 'text'));
+  };
+
+  const handlePlus = () => {
+    let newVal = parseInt(value) + 1;
+    if (parseInt(newVal) > max) newVal = `${max}`;
+    if (onChange) {
+      onChange(newVal);
+    }
+    onChangeValue(`${newVal}`);
+  };
+  const handleMinus = () => {
+    let newVal = parseInt(value) - 1;
+    if (parseInt(newVal) < min) newVal = `${min}`;
+    if (onChange) {
+      onChange(newVal);
+    }
+    onChangeValue(`${newVal}`);
   };
 
   const handleIconType = () => {
@@ -94,17 +126,32 @@ const Input = ({
       <View style={[styles.container, style]}>
         {iconName ? <>{handleIconType()}</> : null}
         <TextInput
-          secureTextEntry={type === 'password'}
           style={styles.input}
           onChangeText={(v) => handleChange(v)}
           value={value}
           maxLength={maxLength}
           editable={!isReadOnly}
-          autoCompleteType={type}
           placeholder={placeholder}
           onFocus={() => handleFocus()}
           onBlur={() => handleBlur()}
+          keyboardType={'numeric'}
         />
+        <TouchableOpacity onPress={() => handleMinus()}>
+          <MaterialCommunityIcons
+            style={touchableIconStyle}
+            size={27}
+            name="minus"
+            color={SECONDARY_TEXT_COLOR}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => handlePlus()}>
+          <MaterialCommunityIcons
+            style={touchableIconStyle}
+            size={27}
+            name="plus"
+            color={MAIN_THEME_COLOR}
+          />
+        </TouchableOpacity>
       </View>
       {isTouched ? (
         <>{errorMsg === null ? null : <Text style={styles.error}>{errorMsg}</Text>}</>
@@ -113,21 +160,21 @@ const Input = ({
   );
 };
 
-Input.propTypes = {
-  type: PropTypes.string,
+Counter.propTypes = {
   placeholder: PropTypes.string,
   isReadOnly: PropTypes.bool,
+  min: PropTypes.number,
+  max: PropTypes.number,
   maxLength: PropTypes.number,
   iconName: PropTypes.string,
   iconType: PropTypes.string,
   iconColor: PropTypes.string,
   style: PropTypes.objectOf(PropTypes.string),
   onChange: PropTypes.func,
-  inputType: PropTypes.string,
+  required: PropTypes.bool,
 };
 
-Input.defaultProps = {
-  type: 'off',
+Counter.defaultProps = {
   placeholder: '',
   isReadOnly: false,
   maxLength: 300,
@@ -136,7 +183,9 @@ Input.defaultProps = {
   iconColor: MAIN_TEXT_COLOR,
   style: null,
   onChange: null,
-  inputType: 'text',
+  required: false,
+  min: 0,
+  max: Infinity,
 };
 
-export default Input;
+export default Counter;

@@ -4,7 +4,7 @@ import { NORMAL_TEXT_SIZE, NORMAL_TEXT_FONT_FAMILY } from '../../../constants/th
 
 const styles = StyleSheet.create({
   wrapper: {
-    width: '100%'
+    width: '100%',
   },
   container: {
     width: '100%',
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     fontFamily: NORMAL_TEXT_FONT_FAMILY,
     width: '85%',
     padding: 14,
-    color: MAIN_TEXT_COLOR
+    color: MAIN_TEXT_COLOR,
   },
   item: {
     width: '100%',
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     fontSize: NORMAL_TEXT_SIZE,
     fontFamily: NORMAL_TEXT_FONT_FAMILY,
     color: MAIN_TEXT_COLOR,
-    marginLeft: 10
+    marginLeft: 10,
   },
 });
 

@@ -10,9 +10,14 @@ import {
   Animated,
   Easing,
 } from 'react-native';
-import { SimpleLineIcons, MaterialCommunityIcons } from '@expo/vector-icons';
+import { SimpleLineIcons, MaterialCommunityIcons, Ionicons, FontAwesome } from '@expo/vector-icons';
 import { MAIN_TEXT_COLOR, MAIN_THEME_COLOR } from '../../../constants/theme/colors';
 import styles from './styles';
+
+const iconStyle = {
+  width: 34,
+  textAlign: 'center',
+};
 
 const SelectBox = ({ list, placeholder, iconName, iconType, iconColor, onSelectItem }) => {
   const [selectedItem, setSelectedItem] = useState(null);
@@ -37,7 +42,7 @@ const SelectBox = ({ list, placeholder, iconName, iconType, iconColor, onSelectI
 
   const selectItem = (item) => {
     setSelectedItem(item);
-    onSelectItem(item);
+    if (onSelectItem) onSelectItem(item);
     setValue(item.label);
     setIsHiddenList(!isListHidden);
   };
@@ -45,6 +50,43 @@ const SelectBox = ({ list, placeholder, iconName, iconType, iconColor, onSelectI
   const showBox = () => {
     animateArrow();
     setIsHiddenList(!isListHidden);
+  };
+  const handleIconType = () => {
+    if (iconType === 'mci')
+      return (
+        <MaterialCommunityIcons
+          name={iconName}
+          style={iconStyle}
+          size={34}
+          color={focusColor !== null ? focusColor : iconColor}
+        />
+      );
+    if (iconType === 'ion')
+      return (
+        <Ionicons
+          name={iconName}
+          style={iconStyle}
+          size={34}
+          color={focusColor !== null ? focusColor : iconColor}
+        />
+      );
+    if (iconType === 'fa')
+      return (
+        <FontAwesome
+          style={iconStyle}
+          name={iconName}
+          size={34}
+          color={focusColor !== null ? focusColor : iconColor}
+        />
+      );
+    return (
+      <SimpleLineIcons
+        name={iconName}
+        style={iconStyle}
+        size={24}
+        color={focusColor !== null ? focusColor : iconColor}
+      />
+    );
   };
 
   useEffect(() => setFocusColor(isListHidden ? iconColor : MAIN_THEME_COLOR), [isListHidden]);
@@ -54,23 +96,7 @@ const SelectBox = ({ list, placeholder, iconName, iconType, iconColor, onSelectI
       <View style={styles.wrapper}>
         <TouchableWithoutFeedback onPress={showBox}>
           <View style={styles.container}>
-            {iconName ? (
-              <>
-                {iconType === 'mci' ? (
-                  <MaterialCommunityIcons
-                    name={iconName}
-                    size={34}
-                    color={focusColor !== null ? focusColor : iconColor}
-                  />
-                ) : (
-                  <SimpleLineIcons
-                    name={iconName}
-                    size={24}
-                    color={focusColor !== null ? focusColor : iconColor}
-                  />
-                )}
-              </>
-            ) : null}
+            {iconName ? <>{handleIconType()}</> : null}
             <TextInput
               style={styles.input}
               value={value}
@@ -134,10 +160,12 @@ SelectBox.propTypes = {
 };
 
 SelectBox.defaultProps = {
+  list: [],
   placeholder: '',
   iconName: null,
   iconType: null,
   iconColor: MAIN_TEXT_COLOR,
+  onSelectItem: null,
 };
 
 export default SelectBox;
