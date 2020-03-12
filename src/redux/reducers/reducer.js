@@ -6,6 +6,7 @@ import loginStates from './account/loginStates';
 import newPasswordStates from './account/newPasswordStates';
 import forgotPasswordStates from './account/forgotPasswordStates';
 import errorReducer from './global/error';
+import meetingReducer from './meeting/meeting';
 
 export default combineReducers({
   basicInfo: basicInfoReducer,
@@ -15,4 +16,5 @@ export default combineReducers({
   newPasswordStates: newPasswordStates,
   forgotPasswordStates: forgotPasswordStates,
   error: errorReducer,
+  meeting: meetingReducer,
 });

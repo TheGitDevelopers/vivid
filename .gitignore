@@ -11,6 +11,7 @@ web-build/
 web-report/
 
 run_pixel_emulator_script.bat
+app.json
 vscode
 .vscode
 .vscode/*
@@ -21,8 +22,6 @@ vscode
 *.code-workspace
 
 __snapshots__
-
-run_pixel_emulator_script.bat
 
 # macOS
 .DS_Store

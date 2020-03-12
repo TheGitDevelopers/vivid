@@ -7,7 +7,11 @@ import { MAIN_TEXT_COLOR } from '../../../constants/theme/colors';
 const NormalText = ({ style, text }) => (
   <Text
     style={[
-      { fontSize: NORMAL_TEXT_SIZE, fontFamily: NORMAL_TEXT_FONT_FAMILY, color: MAIN_TEXT_COLOR },
+      {
+        fontSize: NORMAL_TEXT_SIZE,
+        fontFamily: NORMAL_TEXT_FONT_FAMILY,
+        color: MAIN_TEXT_COLOR,
+      },
       style,
     ]}
   >
@@ -16,7 +20,7 @@ const NormalText = ({ style, text }) => (
 );
 
 NormalText.propTypes = {
-  style: PropTypes.objectOf(PropTypes.string),
+  style: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
   text: PropTypes.string,
 };
 
