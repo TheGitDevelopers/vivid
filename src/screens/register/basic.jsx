@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Header from '../../components/common/header/header';
 import ContentContainer from '../../components/common/containers/content-container/container';
 import Input from '../../components/common/input/input';
@@ -24,7 +24,16 @@ import {
 } from '../../redux/actions/register';
 
 const Basic = ({ navigation: { navigate } }) => {
+  const [errors, setErrors] = useState({ firstName: true, surName: true, email: true, password: true });
+  const [isErrorValidation, setIsErrorValidation] = useState(true);
   const dispatch = useDispatch();
+
+  const handleOnError = (type, error) => {
+    const newState = { ...errors, [type]: error }
+    setErrors(newState)
+    Object.keys(newState).find((key) => newState[key] !== null) ? setIsErrorValidation(true) : setIsErrorValidation(false);
+  }
+
   return (
     <>
       <ContentContainer>
@@ -32,31 +41,38 @@ const Basic = ({ navigation: { navigate } }) => {
         <EmptyDivider />
         <Input
           onChange={(v) => dispatch(setPersonName(v))}
+          onError={(err) => handleOnError('firstName', err)}
           iconName="user"
           placeholder={FIRST_NAME_INPUT}
         />
         <EmptyDivider size="small" />
         <Input
           onChange={(v) => dispatch(setPersonSurname(v))}
+          onError={(err) => handleOnError('surName', err)}
           iconName="user"
           placeholder={SURNAME_INPUT}
         />
         <EmptyDivider size="small" />
         <Input
           onChange={(v) => dispatch(setPersonEmail(v))}
-          type="email"
+          onError={(err) => handleOnError('email', err)}
+          autoCompleteType="email"
+          inputType="email"
           iconName="envelope"
           placeholder={EMAIL_INPUT}
         />
         <EmptyDivider size="small" />
         <Input
+          minLength={8}
           onChange={(v) => dispatch(setPersonPassword(v))}
-          type="password"
+          onError={(err) => handleOnError('password', err)}
+          autoCompleteType="password"
+          inputType="password"
           iconName="lock"
           placeholder={PASSWORD_INPUT}
         />
         <EmptyDivider size="big" />
-        <Button onPress={() => navigate('PictureUpload')} text={SUBMIT_BUTTON} />
+        <Button disabled={isErrorValidation} onPress={() => navigate('PictureUpload')} text={SUBMIT_BUTTON} />
         <TextButton onPress={() => navigate('Login')} text={SECONDARY_BUTTON} />
       </ContentContainer>
     </>

@@ -1,1 +1,0 @@
-"d:\Android_Studio_SDK\emulator\emulator.exe" -avd Pixel_2_API_29 -dns-server 8.8.8.8

@@ -82,7 +82,7 @@ const initalState = {
 const meetingReducer = (state = initalState, action) => {
   switch (action.type) {
     case 'SET_MEETING_NAME':
-      return { ...action, name: action.payload };
+      return { ...state, name: action.payload };
     default:
       return state;
   }

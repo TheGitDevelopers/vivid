@@ -1,9 +1,10 @@
 import React from 'react';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import PropTypes from 'prop-types';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Animated } from 'react-native';
 import { NORMAL_TEXT_SIZE, NORMAL_TEXT_FONT_FAMILY } from '../../../constants/theme/typography';
 import { DISABLED_COLOR, MAIN_THEME_COLOR } from '../../../constants/theme/colors';
+import spinner from '../../../animations/spinner';
 
 const styles = StyleSheet.create({
   button: {
@@ -26,12 +27,19 @@ const styles = StyleSheet.create({
   },
 });
 
+const hasAnimations = (iconName) => {
+  if (iconName === 'loading') return { transform: [{ rotate: spinner }] };
+  return { transform: [] };
+}
+
+const AnimatedIcon = Animated.createAnimatedComponent(MaterialCommunityIcons);
+
 const Button = ({ onPress, text, style, disabled, iconName, iconColor }) => (
   <TouchableOpacity style={{ width: '100%' }} disabled={disabled} onPress={() => onPress()}>
     <View style={[styles.button, style, disabled ? styles.disabled : null]}>
       {iconName ? (
-        <MaterialCommunityIcons
-          style={{ marginRight: 5 }}
+        <AnimatedIcon
+          style={[{ marginRight: 5 }, hasAnimations(iconName)]}
           name={iconName}
           size={24}
           color={iconColor}

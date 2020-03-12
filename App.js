@@ -40,6 +40,11 @@ const App = () => {
         <Provider store={store}>
           <NavigationContainer>
             <Stack.Navigator>
+              <Stack.Screen
+                name="SingleMeeting"
+                component={SingleMeeting}
+                options={screenWithMenu}
+              />
               <Stack.Screen name="Register" component={Basic} options={screenWithoutMenu} />
               <Stack.Screen name="Login" component={Login} options={screenWithoutMenu} />
               <Stack.Screen
@@ -64,12 +69,6 @@ const App = () => {
                 options={screenWithoutMenu}
               />
               <Stack.Screen name="AddFriends" component={AddFriends} options={screenWithoutMenu} />
-
-              <Stack.Screen
-                name="SingleMeeting"
-                component={SingleMeeting}
-                options={screenWithMenu}
-              />
             </Stack.Navigator>
           </NavigationContainer>
         </Provider>

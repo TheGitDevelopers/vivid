@@ -14,24 +14,28 @@ const iconStyle = {
 
 const Input = ({
   isReadOnly,
-  type,
+  autoCompleteType,
   placeholder,
   maxLength,
+  minLength,
   iconName,
   iconType,
   iconColor,
   style,
   onChange,
   inputType,
+  onError,
 }) => {
   const [value, onChangeValue] = useState('');
   const [focusColor, setFocusColor] = useState(null);
   const [isTouched, setIsTouched] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
 
+  const iconColorStatement = focusColor !== null ? focusColor : iconColor;
+
   useEffect(() => {
     if (errorMsg !== null) {
-      setErrorMsg(validate(value, inputType));
+      handleValidation();
     }
   }, [value]);
 
@@ -47,9 +51,19 @@ const Input = ({
     setIsTouched(true);
   };
 
+  const handleValidation = () => {
+    let error;
+    if (minLength) {
+      error = validate({ valLength: value.length, minLength }, 'minLength');
+    }
+    if (!error) error = validate(value, inputType);
+    setErrorMsg(error);
+    if (onError) onError(error);
+  };
+
   const handleBlur = () => {
     setFocusColor(iconColor);
-    setErrorMsg(validate(value, inputType));
+    handleValidation();
   };
   const handleIconType = () => {
     if (iconType === 'mci')
@@ -58,34 +72,15 @@ const Input = ({
           name={iconName}
           style={iconStyle}
           size={34}
-          color={focusColor !== null ? focusColor : iconColor}
+          color={iconColorStatement}
         />
       );
     if (iconType === 'ion')
-      return (
-        <Ionicons
-          name={iconName}
-          style={iconStyle}
-          size={34}
-          color={focusColor !== null ? focusColor : iconColor}
-        />
-      );
+      return <Ionicons name={iconName} style={iconStyle} size={34} color={iconColorStatement} />;
     if (iconType === 'fa')
-      return (
-        <FontAwesome
-          style={iconStyle}
-          name={iconName}
-          size={34}
-          color={focusColor !== null ? focusColor : iconColor}
-        />
-      );
+      return <FontAwesome style={iconStyle} name={iconName} size={34} color={iconColorStatement} />;
     return (
-      <SimpleLineIcons
-        name={iconName}
-        style={iconStyle}
-        size={24}
-        color={focusColor !== null ? focusColor : iconColor}
-      />
+      <SimpleLineIcons name={iconName} style={iconStyle} size={24} color={iconColorStatement} />
     );
   };
 
@@ -94,13 +89,13 @@ const Input = ({
       <View style={[styles.container, style]}>
         {iconName ? <>{iconName ? <>{handleIconType()}</> : null}</> : null}
         <TextInput
-          secureTextEntry={type === 'password'}
+          secureTextEntry={autoCompleteType === 'password'}
           style={styles.input}
           onChangeText={(v) => handleChange(v)}
           value={value}
           maxLength={maxLength}
           editable={!isReadOnly}
-          autoCompleteType={type}
+          autoCompleteType={autoCompleteType}
           placeholder={placeholder}
           onFocus={() => handleFocus()}
           onBlur={() => handleBlur()}
@@ -114,9 +109,10 @@ const Input = ({
 };
 
 Input.propTypes = {
-  type: PropTypes.string,
+  autoCompleteType: PropTypes.string,
   placeholder: PropTypes.string,
   isReadOnly: PropTypes.bool,
+  minLength: PropTypes.number,
   maxLength: PropTypes.number,
   iconName: PropTypes.string,
   iconType: PropTypes.string,
@@ -124,12 +120,14 @@ Input.propTypes = {
   style: PropTypes.objectOf(PropTypes.string),
   onChange: PropTypes.func,
   inputType: PropTypes.string,
+  onError: PropTypes.func,
 };
 
 Input.defaultProps = {
-  type: 'off',
+  autoCompleteType: 'off',
   placeholder: '',
   isReadOnly: false,
+  minLength: null,
   maxLength: 300,
   iconName: null,
   iconType: null,
@@ -137,6 +135,7 @@ Input.defaultProps = {
   style: null,
   onChange: null,
   inputType: 'text',
+  onError: null,
 };
 
 export default Input;
