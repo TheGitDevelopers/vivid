@@ -7,10 +7,9 @@ import EmptyDivider from '../../components/common/dividers/emptyDivider';
 import { StyleSheet, Dimensions, View, TouchableOpacity, TextInput } from 'react-native';
 import MapView from 'react-native-maps';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { HEADER_TEXT_SIZE } from '../../constants/theme/typography';
 import { MAIN_THEME_COLOR, MAIN_TEXT_COLOR, DISABLED_COLOR } from '../../constants/theme/colors';
 import UsersList from '../../components/common/users-list/usersList';
-import { setMeetingName } from '../../redux/actions/meeting/meeting';
+import Header from '../../components/common/header/header';
 
 const styles = StyleSheet.create({
   mapStyle: {
@@ -19,37 +18,19 @@ const styles = StyleSheet.create({
   },
 });
 
-const SingleMeeting = () => {
-  const dispatch = useDispatch();
+const SingleMeeting = ({ navigation: { navigate } }) => {
   const { name, date, location, memberLimit, memberQuantity, members } = useSelector(
     (state) => state.meeting,
   );
-  const [value, setValue] = useState(name);
-  const [editable, setEditable] = useState(false);
   return (
     <>
       <ContentContainer fullScreen={true}>
         <MapView style={styles.mapStyle} />
         <EmptyDivider />
         <View style={{ flexDirection: 'row' }}>
-          {/* TODO */}
-          <TextInput
-            style={{
-              fontSize: HEADER_TEXT_SIZE,
-              color: MAIN_THEME_COLOR,
-              marginRight: 10,
-            }}
-            editable={editable}
-            value={value}
-            onChangeText={(v) => setValue(v)}
-            onBlur={() => dispatch(setMeetingName(value))}
-          />
-          <TouchableOpacity onPress={() => setEditable((val) => !val)}>
-            <MaterialCommunityIcons
-              color={editable ? MAIN_TEXT_COLOR : DISABLED_COLOR}
-              name="pencil"
-              size={25}
-            />
+          <Header text={name} style={{ marginRight: 10 }} />
+          <TouchableOpacity onPress={() => navigate('home')}>
+            <MaterialCommunityIcons color={MAIN_TEXT_COLOR} name="pencil" size={25} />
           </TouchableOpacity>
         </View>
         <EmptyDivider size="small" />
@@ -72,7 +53,7 @@ const SingleMeeting = () => {
         />
         <EmptyDivider size="small" />
         <Input
-          isReadOnly={!editable}
+          isReadOnly={true}
           iconType="ion"
           iconName="ios-pin"
           iconColor={MAIN_THEME_COLOR}
@@ -94,6 +75,12 @@ const SingleMeeting = () => {
       </ContentContainer>
     </>
   );
+};
+
+SingleMeeting.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 export default SingleMeeting;
