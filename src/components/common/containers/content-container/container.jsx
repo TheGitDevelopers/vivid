@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, TouchableWithoutFeedback, Keyboard, ScrollView, View } from 'react-native';
+import { StyleSheet, ScrollView, View } from 'react-native';
 import PropTypes from 'prop-types';
 import { MAIN_BACKGROUND_COLOR } from '../../../../constants/theme/colors';
 
@@ -12,22 +12,26 @@ const styles = StyleSheet.create({
     paddingHorizontal: 30,
     alignItems: 'center',
     justifyContent: 'flex-start',
-    paddingVertical: 50,
   },
 });
 
-const ContentContainer = ({ children }) => (
-  <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
-    <View style={styles.cc}>
-      <ScrollView nestedScrollEnabled contentContainerStyle={styles.container}>
-        {children}
-      </ScrollView>
-    </View>
-  </TouchableWithoutFeedback>
+const isFullScreen = (fullScreen) => ({ paddingVertical: fullScreen ? 0 : 50 });
+
+const ContentContainer = ({ children, fullScreen }) => (
+  <View style={[styles.cc, isFullScreen(fullScreen)]}>
+    <ScrollView nestedScrollEnabled contentContainerStyle={styles.container}>
+      {children}
+    </ScrollView>
+  </View>
 );
+
+ContentContainer.defaultProps = {
+  fullScreen: false,
+};
 
 ContentContainer.propTypes = {
   children: PropTypes.oneOfType([PropTypes.node, PropTypes.arrayOf(PropTypes.node)]).isRequired,
+  fullScreen: PropTypes.bool,
 };
 
 export default ContentContainer;

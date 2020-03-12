@@ -11,6 +11,7 @@ web-build/
 web-report/
 
 run_pixel_emulator_script.bat
+app.json
 vscode
 .vscode
 .vscode/*
