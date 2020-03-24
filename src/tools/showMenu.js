@@ -5,24 +5,23 @@ import Logo from '../components/common/logo/logo';
 
 const screenWithMenu = {
   headerStyle: {
-    elevation: 0
+    elevation: 0,
   },
   headerLeft: null,
   headerTitle: () => <Logo />,
-  headerRight: () => (
-    <MenuButton />
-  ),
-  ...slideHorizontal
+  headerRight: () => <MenuButton />,
+  ...slideHorizontal,
 };
 
 const screenWithoutMenu = {
   headerStyle: {
-    elevation: 0
+    elevation: 0,
   },
   headerLeft: null,
   headerTitle: () => <Logo />,
   ...slideHorizontal,
 };
 
+const screenWithoutLogo = { headerShown: false };
 
-export { screenWithMenu, screenWithoutMenu };
+export { screenWithMenu, screenWithoutMenu, screenWithoutLogo };
