@@ -41,8 +41,8 @@ const Carousel = ({ itemsPerIntervals, data, style }) => {
           setCurrInterval(getCurrentInterval(data.nativeEvent.contentOffset.x));
         }}
       >
-        {data.map(({ title, text }) => (
-          <View style={styles.slide}>
+        {data.map(({ title, text, id }) => (
+          <View style={styles.slide} key={id}>
             <Text style={styles.slideTitle}>{title}</Text>
             <Text style={styles.slideText}>{text}</Text>
           </View>
@@ -52,6 +52,7 @@ const Carousel = ({ itemsPerIntervals, data, style }) => {
       <View style={styles.indicatorsContainer}>
         {indicators.map((item, index) => (
           <TouchableOpacity
+            key={index}
             style={{ paddingHorizontal: 8 }}
             onPress={() => scrollViewRef.current.scrollTo({ x: width * index })}
           >

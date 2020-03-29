@@ -9,7 +9,7 @@ const Logo = ({ logoSize, style }) => (
 );
 
 Logo.propTypes = {
-  logoSize: PropTypes.number,
+  logoSize: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   style: PropTypes.objectOf(PropTypes.string),
 };
 
