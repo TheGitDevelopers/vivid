@@ -28,8 +28,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   indicator: {
-    width: 16,
-    height: 16,
+    width: 14,
+    height: 14,
     borderWidth: 1,
     borderRadius: 50,
   },
