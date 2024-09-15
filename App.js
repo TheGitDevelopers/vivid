@@ -8,13 +8,14 @@ import { createStore } from 'redux';
 import Basic from './src/screens/register/basic';
 import PictureUpload from './src/screens/register/pictureUpload';
 import OtherInfo from './src/screens/register/otherInfo';
-import { screenWithoutMenu } from './src/tools/showMenu';
+import { screenWithoutMenu, screenWithMenu } from './src/tools/showMenu';
 import reducer from './src/redux/reducers/reducer';
 import EducationInfo from './src/screens/register/educationInfo';
 import AddFriends from './src/screens/register/addFriends';
 import Login from './src/screens/login/login';
 import NewPassword from './src/screens/login/newPassword';
 import ForgotPassword from './src/screens/login/forgotPassword';
+import SingleMeeting from './src/screens/meeting/singleMeeting';
 
 const Stack = createStackNavigator();
 
@@ -40,15 +41,12 @@ const App = () => {
           <NavigationContainer>
             <Stack.Navigator>
               <Stack.Screen
-                name="Register"
-                component={Basic}
-                options={screenWithoutMenu}
+                name="SingleMeeting"
+                component={SingleMeeting}
+                options={screenWithMenu}
               />
-              <Stack.Screen
-                name="Login"
-                component={Login}
-                options={screenWithoutMenu}
-              />
+              <Stack.Screen name="Register" component={Basic} options={screenWithoutMenu} />
+              <Stack.Screen name="Login" component={Login} options={screenWithoutMenu} />
               <Stack.Screen
                 name="ForgotPassword"
                 component={ForgotPassword}
@@ -64,21 +62,13 @@ const App = () => {
                 component={PictureUpload}
                 options={screenWithoutMenu}
               />
-              <Stack.Screen
-                name="OtherInfo"
-                component={OtherInfo}
-                options={screenWithoutMenu}
-              />
+              <Stack.Screen name="OtherInfo" component={OtherInfo} options={screenWithoutMenu} />
               <Stack.Screen
                 name="EducationInfo"
                 component={EducationInfo}
                 options={screenWithoutMenu}
               />
-              <Stack.Screen
-                name="AddFriends"
-                component={AddFriends}
-                options={screenWithoutMenu}
-              />
+              <Stack.Screen name="AddFriends" component={AddFriends} options={screenWithoutMenu} />
             </Stack.Navigator>
           </NavigationContainer>
         </Provider>

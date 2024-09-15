@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { View, TextInput, Text } from 'react-native';
-import { SimpleLineIcons, MaterialCommunityIcons } from '@expo/vector-icons';
+
+import { SimpleLineIcons, MaterialCommunityIcons, Ionicons, FontAwesome } from '@expo/vector-icons';
 import PropTypes from 'prop-types';
 import styles from './styles';
 import { MAIN_TEXT_COLOR, MAIN_THEME_COLOR } from '../../../constants/theme/colors';
 import validate from '../../../tools/validators/validate';
+
+const iconStyle = {
+  width: 34,
+  textAlign: 'center',
+};
 
 const Input = ({
   isReadOnly,
@@ -59,19 +65,29 @@ const Input = ({
     setFocusColor(iconColor);
     handleValidation();
   };
+  const handleIconType = () => {
+    if (iconType === 'mci')
+      return (
+        <MaterialCommunityIcons
+          name={iconName}
+          style={iconStyle}
+          size={34}
+          color={iconColorStatement}
+        />
+      );
+    if (iconType === 'ion')
+      return <Ionicons name={iconName} style={iconStyle} size={34} color={iconColorStatement} />;
+    if (iconType === 'fa')
+      return <FontAwesome style={iconStyle} name={iconName} size={34} color={iconColorStatement} />;
+    return (
+      <SimpleLineIcons name={iconName} style={iconStyle} size={24} color={iconColorStatement} />
+    );
+  };
 
   return (
     <>
       <View style={[styles.container, style]}>
-        {iconName ? (
-          <>
-            {iconType === 'mci' ? (
-              <MaterialCommunityIcons name={iconName} size={34} color={iconColorStatement} />
-            ) : (
-              <SimpleLineIcons name={iconName} size={24} color={iconColorStatement} />
-            )}
-          </>
-        ) : null}
+        {iconName ? <>{iconName ? <>{handleIconType()}</> : null}</> : null}
         <TextInput
           secureTextEntry={autoCompleteType === 'password'}
           style={styles.input}
